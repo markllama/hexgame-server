@@ -1,3 +1,5 @@
+## Map API queries
+
 ### Query all maps [GET]
 
 Request a list of all stored maps
