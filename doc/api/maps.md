@@ -64,10 +64,44 @@ Request a single map by id
                 "gameId": "1",
                 "name": "samplemap",
                 "description": "A Sample Map",
+                "shape": "sawtooth",
                 "size": { "hx": 15, "hy": 22 },
                 "origin": { "hx": 0, "hy": 0 },
-                "shape": "sawtooth",
                 "terrains": [ ]
             }
 
+
+### Create a new map [POST]
+
++ Request (application/json)
+
+        {
+            "gameId": "1",
+            "name": "newmap",
+            "description": "A new map",
+            "shape": "sawtooth",
+            "size": { "hx": 15, "hy": 22 },
+            "origin": { "hx": 0, "hy": 0 },
+            "terrains": [ ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+    
+        Location: /maps/{id}
+        
+    + Body
+    
+            {
+                "id": "1"
+                "gameId": "1",
+                "name": "newmap",
+                "description": "A new map",
+                "shape": "sawtooth",
+                "size": { "hx": 15, "hy": 22 },
+                "origin": { "hx": 0, "hy": 0 },
+                "terrains": [ ]
+            }
+            
 
