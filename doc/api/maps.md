@@ -59,15 +59,15 @@ Request a single map by id
 
     + Body
     
-        {
-          "id": "1",
-          "gameId": "1",
-          "name": "samplemap",
-          "description": "A Sample Map",
-          "size": { "hx": 15, "hy": 22 },
-          "origin": { "hx": 0, "hy": 0 },
-          "shape": "sawtooth",
-          "terrains": [ ]
-         }
+            {
+                "id": "1",
+                "gameId": "1",
+                "name": "samplemap",
+                "description": "A Sample Map",
+                "size": { "hx": 15, "hy": 22 },
+                "origin": { "hx": 0, "hy": 0 },
+                "shape": "sawtooth",
+                "terrains": [ ]
+            }
 
 
