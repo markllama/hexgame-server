@@ -9,3 +9,11 @@ type Vector struct {
 	Hx int `json:"hx"`
 	Hy int `json:"hy"`
 }
+
+func (v Vector) Hz() int {
+	return v.Hy - v.Hx
+}
+
+func (v Vector) Length() int {
+	return max(abs(v.Hx), abs(v.Hy), abs(v.Hz()))
+}
