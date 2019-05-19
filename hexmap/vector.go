@@ -25,6 +25,15 @@ func (v Vector) Length() int {
 	return max(abs(v.Hx), abs(v.Hy), abs(v.Hz()))
 }
 
+func (v Vector) Invert() Vector {
+	return Vector{-v.Hx, -v.Hy}
+}
+
+// Adding two vectors is just adding the components
 func (v0 Vector) Add(v1 Vector) Vector {
 	return Vector{v0.Hx + v1.Hx, v0.Hy + v1.Hy}
+}
+
+func (v0 Vector) Sub(v1 Vector) Vector {
+	return v0.Add(v1.Invert())
 }
