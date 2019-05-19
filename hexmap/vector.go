@@ -37,3 +37,7 @@ func (v0 Vector) Add(v1 Vector) Vector {
 func (v0 Vector) Sub(v1 Vector) Vector {
 	return v0.Add(v1.Invert())
 }
+
+func (v0 Vector) Distance(v1 Vector) int {
+	return v1.Sub(v0).Length()
+}
