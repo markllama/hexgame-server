@@ -1,6 +1,10 @@
 package hexmap
 
-import "testing"
+import (
+	"testing"
+	"fmt"
+	"encoding/json"
+)
 
 func TestVector(t *testing.T) {
 	hv := Vector{Hx: 0, Hy: 0}
@@ -54,7 +58,6 @@ func TestAdd(t *testing.T) {
 	}
 }
 
-
 func TestDistance(t *testing.T) {
 	hv0 := Vector{-3, 5}
 	hv1 := Vector{3, -5}
@@ -67,7 +70,6 @@ func TestDistance(t *testing.T) {
 		t.Error()
 	}
 }
-
 
 func TestRotate(t *testing.T) {
 
@@ -92,6 +94,36 @@ func TestRotate(t *testing.T) {
 		if ring0[0].Rotate(i) != v {
 			t.Errorf("%s rotated %d is %s, not %s", ring0[0], i, ring0[0].Rotate(i), ring0[i])
 		}
+	}
+	
+}
+
+func TestJson(t *testing.T) {
+
+	originJson := `{"hx":0,"hy":0}`
+
+	// try marshaling
+	o, err := json.Marshal(ORIGIN)
+
+	if err != nil {
+		t.Errorf(fmt.Sprintf("%s", err))
+	}
+
+	if string(o) != originJson {
+		t.Errorf("Marshal ORIGIN didnt work: %s != %s", originJson, string(o))
+	}
+
+	// now unmarshal
+
+	var originVector Vector
+	err = json.Unmarshal([]byte(originJson), &originVector)
+	
+	if err != nil {
+		t.Errorf(fmt.Sprintf("%s", err))
+	}
+
+	if originVector != ORIGIN {
+		t.Errorf("Origin Vector JSON did not unmarshal to ORIGIN")
 	}
 	
 }

@@ -61,3 +61,10 @@ func (v Vector) Rotate(hextants int) Vector {
 
 	return Vector{ring[hextants+1], ring[hextants]}
 }
+
+// determine the most coarse idea of the direction of a vector
+// Which hextant (hexagonal "quadrant") the location resides in.
+// The axes are considered to be in the hextant clockwise
+// func (v Vector) Hextant() int {
+	
+// }
