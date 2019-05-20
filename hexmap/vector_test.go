@@ -53,3 +53,27 @@ func TestAdd(t *testing.T) {
 		t.Errorf("hv0 %s != result1 %s", hv1, result1)
 	}
 }
+
+
+func TestDistance(t *testing.T) {
+	hv0 := Vector{-3, 5}
+	hv1 := Vector{3, -5}
+
+	if ORIGIN.Distance(hv0) != hv0.Length() {
+		t.Error()
+	}
+
+	if ORIGIN.Distance(hv1) != hv1.Length() {
+		t.Error()
+	}
+}
+
+
+func TestRotate(t *testing.T) {
+	hv0 := Vector{4, -2}
+	hv1 := Vector{-2, -6}
+
+	if hv0.Rotate(1) != hv1 {
+		t.Error()
+	}
+}
