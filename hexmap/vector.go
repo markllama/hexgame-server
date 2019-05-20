@@ -51,13 +51,13 @@ func (v0 Vector) Distance(v1 Vector) int {
 func (v Vector) Rotate(hextants int) Vector {
 	// the hextants can be any int.  first reduce it to range [0..5]
 
-	hextants = hextants % 6
+	//hextants = hextants % 6
 
 	if hextants < 0 {
 		hextants += 6
 	}
 	
-	ring := []int {v.Hx, v.Hy, v.Hz(), -v.Hx, -v.Hy, -v.Hz(), v.Hx}
+	ring := []int {v.Hy, v.Hx, -v.Hz(), -v.Hy, -v.Hx, v.Hz(), v.Hy}
 
-	return Vector{ring[hextants], ring[hextants+1]}
+	return Vector{ring[hextants+1], ring[hextants]}
 }

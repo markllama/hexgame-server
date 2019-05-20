@@ -70,10 +70,10 @@ func TestDistance(t *testing.T) {
 
 
 func TestRotate(t *testing.T) {
-	hv0 := Vector{4, -2}
-	hv1 := Vector{-2, -6}
 
-	if hv0.Rotate(1) != hv1 {
-		t.Error()
+	for i, v := range UNIT[:5] {
+		if UNIT[0].Rotate(i) != v {
+			t.Errorf("%s rotated 1 is %s, not %s", UNIT[0], UNIT[0].Rotate(i), UNIT[i])
+		}
 	}
 }
