@@ -71,9 +71,27 @@ func TestDistance(t *testing.T) {
 
 func TestRotate(t *testing.T) {
 
+	// check that rotating the unit vectors gives the right answers
 	for i, v := range UNIT[:5] {
 		if UNIT[0].Rotate(i) != v {
 			t.Errorf("%s rotated 1 is %s, not %s", UNIT[0], UNIT[0].Rotate(i), UNIT[i])
 		}
 	}
+
+	// try off-axis
+	ring0 := []Vector {
+		{3, -4},
+		{7, 3},
+		{4, 7},
+		{-3, 4},
+		{-7, -3},
+		{-4, -7},
+	}
+
+	for i, v := range ring0 {
+		if ring0[0].Rotate(i) != v {
+			t.Errorf("%s rotated %d is %s, not %s", ring0[0], i, ring0[0].Rotate(i), ring0[i])
+		}
+	}
+	
 }
