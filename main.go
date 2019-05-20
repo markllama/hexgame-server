@@ -5,17 +5,38 @@ package main
 
 import (
 	"fmt"
+	"flag"
 //	"os"
 )
+
+var opts struct {
+	debug bool
+	verbose bool
+	url string
+	port int
+}
 
 // ---------------------------------------------------------------------------
 // Configuration and environment variables
 // ---------------------------------------------------------------------------
 
+// verbose: HEXGAME_VERBOSE
+// debug:   HEXGAME_DEBUG
+// url:     HEXGAME_URL
+// port:    HEXGAME_PORT
+//
+
+func init() {
+	flag.BoolVar(&opts.verbose, "verbose", false, "provide verbose output")
+	flag.BoolVar(&opts.debug, "debug", false, "provide internal debugging output")
+	flag.StringVar(&opts.url, "url", "http://localhost", "server URL")
+	flag.IntVar(&opts.port, "port", 3000, "server port")
+}
 
 // arguments take precedence. Set those first.
 func process_arguments() {
 	fmt.Println("Processing arguments")
+	flag.Parse()
 }
 
 // Set from environment if not set in args
@@ -37,5 +58,9 @@ func main() {
 	process_arguments()
 	process_environment()
 	process_defaults()
+
+	if opts.debug {
+		fmt.Println("Options: ", opts)
+	}
 	fmt.Println("-- End Program --");
 }
