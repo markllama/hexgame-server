@@ -66,7 +66,7 @@ func main() {
 	}
 
 	game_service := service.NewServer()
-	game_service.Run(fmt.Sprintf(":%s", opts.port))
+	game_service.Run(fmt.Sprintf(":%d", opts.port))
 	
 	fmt.Println("-- End Program --");
 }
