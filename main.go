@@ -6,7 +6,9 @@ package main
 import (
 	"fmt"
 	"flag"
-//	"os"
+	//	"os"
+
+	"github.com/markllama/hexgame-server/service"
 )
 
 var opts struct {
@@ -62,5 +64,9 @@ func main() {
 	if opts.debug {
 		fmt.Println("Options: ", opts)
 	}
+
+	game_service := service.NewServer()
+	game_service.Run(fmt.Sprintf(":%s", opts.port))
+	
 	fmt.Println("-- End Program --");
 }

@@ -3,7 +3,7 @@ HOST: http://polls.apiblueprint.org/
 
 # hexgame
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Hexgame is an API for managing and play hex board based games
 
 ## Games Collection [/games]
 
@@ -24,11 +24,10 @@ Polls is a simple API allowing consumers to view polls and vote in them.
             }
         ]
 
-### Create a New Question [POST]
+### Create a New Game [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+You may create your own game using this action. It takes a JSON
+object containing the name and other info.
 
 + Request (application/json)
 
@@ -47,7 +46,7 @@ form of choices.
     + Body
 
             {
-                "name": "Fighting",
-                "author": "I. N. Credible",
-                "copyright": "2002"
+                "name": "Cars",
+                "author": "Sue Mee",
+                "copyright": "2014"
             }
