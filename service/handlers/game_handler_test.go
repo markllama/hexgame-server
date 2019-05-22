@@ -36,8 +36,14 @@ func TestCreateGame(t *testing.T) {
 	defer res.Body.Close()
 
 	payload, err := ioutil.ReadAll(res.Body)
+
 	if err != nil {
+		t.Errorf("Error reading response body: %v", err)
+	}
+
+	if res.StatusCode != http.StatusCreated {
 		t.Errorf("Error reading response body: 201, received %s", res.Status)
 	}
+	
 	fmt.Printf("Payload: %s", string(payload))
 }
