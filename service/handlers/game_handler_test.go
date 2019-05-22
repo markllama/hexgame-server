@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 	"github.com/unrolled/render"
 )
@@ -13,6 +14,10 @@ import (
 
 var (
 	formatter = render.New(render.Options{ IndentJSON: true, })
+)
+
+const (
+	fakeMatchLocationResult = "/matches/5a003b78-409e-4452-b456-a6f0dcee05bd"
 )
 
 func TestCreateGame(t *testing.T) {
@@ -44,6 +49,22 @@ func TestCreateGame(t *testing.T) {
 	if res.StatusCode != http.StatusCreated {
 		t.Errorf("Error reading response body: 201, received %s", res.Status)
 	}
-	
+
+	if _, ok := res.Header["Location"]; !ok {
+		t.Error("Location header is not set")
+	}
+
+	loc, headerOk := res.Header["Location"]
+	if !headerOk {
+		t.Error("Location header is not set")
+	} else {
+		if !strings.Contains(loc[0], "/games/") {
+			t.Errorf("Location header should contain '/matches/'")
+		}
+		if len(loc[0]) != len(fakeMatchLocationResult) {
+			t.Errorf("Location value does not contain guid of new match")
+		}
+	}
+		
 	fmt.Printf("Payload: %s", string(payload))
 }
