@@ -58,7 +58,7 @@ func TestCreateGame(t *testing.T) {
 	if !headerOk {
 		t.Error("Location header is not set")
 	} else {
-		if !strings.Contains(loc[0], "/games/") {
+		if !strings.Contains(loc[0], "/matches/") {
 			t.Errorf("Location header should contain '/matches/'")
 		}
 		if len(loc[0]) != len(fakeMatchLocationResult) {
