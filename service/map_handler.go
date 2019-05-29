@@ -12,3 +12,9 @@ func mapListHandler(formatter *render.Render) http.HandlerFunc {
 		formatter.JSON(w, http.StatusOK, []hexmap.Map {} )
 	}	
 }
+
+func mapHandler(formatter *render.Render) http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		formatter.JSON(w, http.StatusOK, hexmap.Map {} )
+	}	
+}
