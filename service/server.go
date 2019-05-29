@@ -9,6 +9,8 @@ import (
 	"github.com/urfave/negroni"
 	"github.com/gorilla/mux"
 	"github.com/unrolled/render"
+
+	"github.com/markllama/hexgame-server/hexmap"
 )
 
 func NewServer() *negroni.Negroni {
@@ -28,6 +30,8 @@ func NewServer() *negroni.Negroni {
 
 func initRoutes(mx *mux.Router, formatter *render.Render) {
 	mx.HandleFunc("/test", testHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/maps/", mapListHandler(formatter)).Methods("GET")
+	
 }
 
 func testHandler(formatter *render.Render) http.HandlerFunc {
@@ -36,3 +40,8 @@ func testHandler(formatter *render.Render) http.HandlerFunc {
 	}
 }
 
+func mapListHandler(formatter *render.Render) http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		formatter.JSON(w, http.StatusOK, []hexmap.Map {} )
+	}	
+}
