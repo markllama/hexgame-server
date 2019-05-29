@@ -9,8 +9,6 @@ import (
 	"github.com/urfave/negroni"
 	"github.com/gorilla/mux"
 	"github.com/unrolled/render"
-
-	"github.com/markllama/hexgame-server/hexmap"
 )
 
 func NewServer() *negroni.Negroni {
@@ -38,10 +36,4 @@ func testHandler(formatter *render.Render) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		formatter.JSON(w, http.StatusOK, struct{ Test string }{"This is a test"})
 	}
-}
-
-func mapListHandler(formatter *render.Render) http.HandlerFunc {
-	return func(w http.ResponseWriter, req *http.Request) {
-		formatter.JSON(w, http.StatusOK, []hexmap.Map {} )
-	}	
 }
