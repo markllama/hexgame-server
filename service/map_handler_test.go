@@ -1,4 +1,4 @@
-package handlers
+package service
 //
 //
 //
@@ -10,7 +10,6 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/markllama/hexgame-server/service"
 	"github.com/markllama/hexgame-server/hexmap"
 )
 
@@ -24,7 +23,7 @@ func TestGetMapList(t *testing.T) {
 		recorder *httptest.ResponseRecorder
 	)
 
-	server := service.NewServer()
+	server := NewServer()
 
 	recorder = httptest.NewRecorder()
 	request, _ = http.NewRequest("GET", "/maps/", nil)
