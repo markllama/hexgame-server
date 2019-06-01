@@ -14,7 +14,7 @@ Hexgame is an API for managing and play hex board based games
 - title `(String)` : The title of the game.
 - author `(String)` : The person who wrote the game
 - publisher `(String)` : The company that publishes the game
-- copyright `(string)` : The copyright date of the game
+- copyright `(String)` : The copyright date of the game
 
 ---
 ## Games Collection [/games]
@@ -54,5 +54,15 @@ Retrive a list of games.
           }
         ]
 
-# A Single Game [/games/{id}]
+## A Single Game [/games/{id}]
+### Get a single game
 
++ Response 200 (application/json)
+
+        {
+          "id": 1,
+          "title": "Cave People",
+          "author": "Jean Auel"
+          "publisher": "Dell Books"
+          "copyright": "1983"
+        }
