@@ -1,131 +1,58 @@
 FORMAT: 1A
 HOST: http://polls.apiblueprint.org/
 
-# hexgame
+# HexGame Server
 
 Hexgame is an API for managing and play hex board based games
 
-## Games Collection [/games]
+# Group Game
 
-### List All Games [GET]
+---
+**Game Attributes:** 
+
+- id `(Number)` : unique identifier. 
+- title `(String)` : The title of the game.
+- author `(String)` : The person who wrote the game
+- publisher `(String)` : The company that publishes the game
+- copyright `(string)` : The copyright date of the game
+
+---
+## Games Collection [/games]
+### List all games [GET]
+Retrive a list of games.
 
 + Response 200 (application/json)
 
         [
-            {
-                "name": "Tanks",
-                "author": "John Q. Public",
-                "copyright": "2019"
-            },
-            {
-                "name": "Ships",
-                "author": "Some D. Uude",
-                "copyright": "1987"
-            }
+          {
+            "id": 1,
+            "title": "Cave People",
+            "author": "Jean Auel"
+            "publisher": "Dell Books"
+            "copyright": "1983"
+          },
+          {
+            "id": 2,
+            "title": "Tanks",
+            "author": "R. Lee Ermey"
+            "publisher": "Discovery Channel"
+            "copyright": "2010"
+          },
+          {
+            "id": 3,
+            "title": "Cars",
+            "author": "Jeremy Clarkson"
+            "publisher": "Motor Trend"
+            "copyright": "2017"
+          }
+          {
+            "id": 4,
+            "title": "Ships",
+            "author": "C. S. Forrester"
+            "publisher": "Hornblower Books"
+            "copyright": "1953"
+          }
         ]
 
-### Create a New Game [POST]
-
-You may create your own game using this action. It takes a JSON
-object containing the name and other info.
-
-+ Request (application/json)
-
-        {
-            "name" "Cars",
-            "author": "Sue Mee",
-            "copyright": "2014"
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /games/1
-
-    + Body
-
-            {
-                "name": "Cars",
-                "author": "Sue Mee",
-                "copyright": "2014"
-            }
-
-## Users Collection [users/]
-
-
-## Matches Collection [matches/]
-
-
-## Maps Collection [maps/]
-
-
-# New Stuff to Try
-
-## Games Collection [games/]
-
-    [
-        
-    ]
-
-### Get a Game [/games/<id>]
-
-    {
-        "name": "A Game",
-        "author": "Who Wrote It",
-        "publisher": "Who sells it",
-        "copyright": "1963"
-    }
-
-
-## Game Maps Collection [games/<gameId>/maps/]
-
-### Game Map [games/<gameId>/maps/<mapId>]
-
-    {
-        "name": "A Map",
-        "shape": "sawtooth",
-        "size": {
-            "hx": 15,
-            "hy": 22
-        },
-        "terrains": [
-            {
-                "name": "a_terrain",
-                "locations": [
-                    {
-                        "hx": 0,
-                        "hy": 0
-                    }
-                ]
-            },
-            {
-                "name": "another_terrain",
-                "locations": [
-                    {
-                        "hx": 0,
-                        "hy": 0
-                    },
-                    {
-                        "hx": 4,
-                        "hy": 4
-                    },
-
-                ]
-            },
-        ]
-    }
-
-## Game Terrains Collection [games/<gameId>/terrains/]
-
-## Game Units Collection [games/<gameId>/units/]
-
-## Game Scenarios Collection [games/<gameId>/scenarios/]
-
-## User Collection [users/]
-
-## Matches Collection [matches/]
-
-## 
-
+# A Single Game [/games/{id}]
 
