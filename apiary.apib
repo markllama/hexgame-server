@@ -21,8 +21,15 @@ Hexgame is an API for managing and play hex board based games
 ### List all games [GET]
 Retrive a list of games.
 
+
 + Response 200 (application/json)
 
+  + Headers
+
+    Location: https://mysite.com/games
+
+  + Body
+  
         [
           {
             "id": 1,
@@ -59,10 +66,17 @@ Retrive a list of games.
 
 + Response 200 (application/json)
 
-        {
-          "id": 1,
-          "title": "Cave People",
-          "author": "Jean Auel"
-          "publisher": "Dell Books"
-          "copyright": "1983"
-        }
+  + Header
+
+      Location: https://mysite.com/games/1
+
+  + Body
+
+      { 
+         "id": 1,
+         "title": "Cave People",
+         "author": "Jean Auel"
+         "publisher": "Dell Books"
+         "copyright": "1983"
+      }
+
