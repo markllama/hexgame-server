@@ -18,65 +18,66 @@ Hexgame is an API for managing and play hex board based games
 
 ---
 ## Games Collection [/games]
+Retrieve a list of games
+
 ### List all games [GET]
-Retrive a list of games.
-
-
 + Response 200 (application/json)
 
-  + Header
+    + Header
+    
+            Location: https://mysite.com/games
 
-         Location: https://mysite.com/games
-
-  + Body
+    + Body
   
-        [
-          {
-            "id": 1,
-            "title": "Cave People",
-            "author": "Jean Auel"
-            "publisher": "Dell Books"
-            "copyright": "1983"
-          },
-          {
-            "id": 2,
-            "title": "Tanks",
-            "author": "R. Lee Ermey"
-            "publisher": "Discovery Channel"
-            "copyright": "2010"
-          },
-          {
-            "id": 3,
-            "title": "Cars",
-            "author": "Jeremy Clarkson"
-            "publisher": "Motor Trend"
-            "copyright": "2017"
-          }
-          {
-            "id": 4,
-            "title": "Ships",
-            "author": "C. S. Forrester"
-            "publisher": "Hornblower Books"
-            "copyright": "1953"
-          }
-        ]
+            [
+                {
+                    "id": 1,
+                    "title": "Cave People",
+                    "author": "Jean Auel"
+                    "publisher": "Dell Books"
+                    "copyright": "1983"
+                },
+                {
+                    "id": 2,
+                    "title": "Tanks",
+                    "author": "R. Lee Ermey"
+                    "publisher": "Discovery Channel"
+                    "copyright": "2010"
+                },
+                {
+                    "id": 3,
+                    "title": "Cars",
+                    "author": "Jeremy Clarkson"
+                    "publisher": "Motor Trend"
+                    "copyright": "2017"
+                }
+                {
+                    "id": 4,
+                    "title": "Ships",
+                    "author": "C. S. Forrester"
+                    "publisher": "Hornblower Books"
+                    "copyright": "1953"
+                }
+            ]
 
 ## A Single Game [/games/{id}]
-### Get a single game
+Manage single games
+
+### Get a single game [GET]
+Retrieve a single game
 
 + Response 200 (application/json)
 
-  + Header
+    + Header
 
             Location: https://mysite.com/games/1
 
-  + Body
-
-      { 
-         "id": 1,
-         "title": "Cave People",
-         "author": "Jean Auel"
-         "publisher": "Dell Books"
-         "copyright": "1983"
-      }
-
+    + Body
+    
+            { 
+                "id": 1,
+                "title": "Cave People",
+                "author": "Jean Auel"
+                "publisher": "Dell Books"
+                "copyright": "1983"
+            }
