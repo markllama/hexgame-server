@@ -81,3 +81,35 @@ Retrieve a single game
                 "publisher": "Dell Books"
                 "copyright": "1983"
             }
+
+# Group Map
+
+## A list of games [/games/{id}/maps]
+Retrieve a list of maps for a game
+
++ Response 200 (application/json)
+
+    + Header
+
+            Location: https://mysite.com/games/1/maps
+
+    + Body
+
+            [
+                {
+                    "id": 1,
+                    "name": "Villiage",
+                    "url": "https://mysite.com/games/1/maps/1"
+                },
+                {
+                    "id": 2,
+                    "name": "Water Hole",
+                    "url": "https://mysite.com/games/1/maps/2"
+                },
+                {
+                    "id": 3,
+                    "name": "Hunting Ground",
+                    "url": "https://mysite.com/games/1/maps/3"
+                }
+            ]
+            
