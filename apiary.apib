@@ -101,7 +101,7 @@ Retrieve a list of maps for a game
             [
                 {
                     "id": 1,
-                    "name": "Villiage",
+                    "name": "Village",
                     "url": "https://mysite.com/games/1/maps/1"
                 },
                 {
@@ -115,3 +115,24 @@ Retrieve a list of maps for a game
                     "url": "https://mysite.com/games/1/maps/3"
                 }
             ]
+
+## A map [/games/{game_id}/maps/{map_id}
+
+### Get a single map [GET]
+
++ Response 200 (application/json)
+
+    + Header
+
+            Location: https://mysite.com/games/1/maps/1
+
+    + Body
+
+            {
+                "id": 1.
+                "name": "Village",
+                "url": "https://mysite.com/games/1/maps/1"
+                "size": { "hx": 15, "hy": 22 },
+                "terrains": [
+                ]
+            }
