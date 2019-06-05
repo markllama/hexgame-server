@@ -125,14 +125,14 @@ A single map object
 
     + Header
 
-            Location: https://mysite.com/games/1/maps/1
+            Location: https://mysite.com/maps/1
 
     + Body
 
             {
                 "id": 1.
                 "name": "Village",
-                "url": "https://maps/1"
+                "url": "https:/mysite.com/maps/1"
                 "size": { "hx": 15, "hy": 22 },
                 "terrains": [
                 ]
@@ -150,15 +150,41 @@ Get a list of match object references
 
     + Header
 
-            Location: https://mysite.com/games/1/maps/1
+            Location: https://mysite.com/matches
 
     + Body
 
             [
                 {
+                    "id": 1,
+                    "url": "https://mysite.com/matches/1",
+                    "game_id", 1,
                 },
                 {
+                    "id": 2,
+                    "url": "https://mysite.com/matches/2",
+                    "game_id", 2,
                 },
                 {
+                    "id": 3,
+                    "url": "https://mysite.com/matches/3",
+                    "game_id", 3,
                 }
             ]
+
+### Get a single Match [GET]
+
++ Response 200 (application/json)
+
+    + Header
+
+            Location: https://mysite.com/matches/1
+
+    + Body
+
+            {
+                "id": 1,
+                "url": "https://mysite.com/matches/1",
+                "game_id", 1,
+                "map_id", 1,
+            }
