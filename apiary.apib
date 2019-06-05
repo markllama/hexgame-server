@@ -85,7 +85,7 @@ Retrieve a single game
 # Group Map
 
 ---
-## Maps Collection [/games/{id}/maps]
+## Maps Collection [/maps]
 Retrieve a list of maps for a game
 
 ### Get a list of maps [GET]
@@ -94,7 +94,7 @@ Retrieve a list of maps for a game
 
     + Header
 
-            Location: https://mysite.com/games/1/maps
+            Location: https://mysite.com/maps
 
     + Body
 
@@ -102,21 +102,21 @@ Retrieve a list of maps for a game
                 {
                     "id": 1,
                     "name": "Village",
-                    "url": "https://mysite.com/games/1/maps/1"
+                    "url": "https://mysite.com/maps/1"
                 },
                 {
                     "id": 2,
                     "name": "Water Hole",
-                    "url": "https://mysite.com/games/1/maps/2"
+                    "url": "https://mysite.com/maps/2"
                 },
                 {
                     "id": 3,
                     "name": "Hunting Ground",
-                    "url": "https://mysite.com/games/1/maps/3"
+                    "url": "https://mysite.com/maps/3"
                 }
             ]
 
-## A Single Map [/games/{game_id}/maps/{map_id}]
+## A Single Map [/maps/{map_id}]
 A single map object
 
 ### Get a single map [GET]
@@ -132,8 +132,33 @@ A single map object
             {
                 "id": 1.
                 "name": "Village",
-                "url": "https://mysite.com/games/1/maps/1"
+                "url": "https://maps/1"
                 "size": { "hx": 15, "hy": 22 },
                 "terrains": [
                 ]
             }
+
+
+# Group Match
+
+## GAll Matches [/matches]
+Get a list of match object references
+
+### Get All Matches [GET]
+
++ Response 200 (application/json)
+
+    + Header
+
+            Location: https://mysite.com/games/1/maps/1
+
+    + Body
+
+            [
+                {
+                },
+                {
+                },
+                {
+                }
+            ]
