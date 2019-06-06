@@ -28,8 +28,14 @@ func NewServer() *negroni.Negroni {
 
 func initRoutes(mx *mux.Router, formatter *render.Render) {
 	mx.HandleFunc("/test", testHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/games/", gameListHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/games/{id}", gameHandler(formatter)).Methods("GET")
 	mx.HandleFunc("/maps/", mapListHandler(formatter)).Methods("GET")
 	mx.HandleFunc("/maps/{id}", mapHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/matches/", matchListHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/matches/{id}", matchHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/users/", userListHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/users/{id}", userHandler(formatter)).Methods("GET")
 	
 }
 

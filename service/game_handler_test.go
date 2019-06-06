@@ -1,70 +1,78 @@
 package service
-
+//
+//
+//
 import (
-	"bytes"
-	"fmt"
+	//	"github.com/unrolled/render"
+	"encoding/json"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
-	"strings"
 	"testing"
-	"github.com/unrolled/render"
+
+	"github.com/markllama/hexgame-server/hexgame"
 )
 
+func TestGetGameList(t *testing.T) {
+	var (
+		request *http.Request
+		recorder *httptest.ResponseRecorder
+	)
 
-var (
-	formatter = render.New(render.Options{ IndentJSON: true, })
-)
+	server := NewServer()
 
-const (
-	fakeMatchLocationResult = "/matches/5a003b78-409e-4452-b456-a6f0dcee05bd"
-)
+	recorder = httptest.NewRecorder()
+	request, _ = http.NewRequest("GET", "/maps/", nil)
+	server.ServeHTTP(recorder, request)
 
-func TestCreateGame(t *testing.T) {
-	client := &http.Client{}
-
-	server := httptest.NewServer(http.HandlerFunc(createGameHandler(formatter)))
-	defer server.Close()
-
-	body := []byte("{\n \"gridsize\": 19,\n \"players\": [\n {\n \"color\": \"white\",\n \"name\": \"bob\"\n },\n {\n \"color\": \"black\",\n \"name\": \"alfred\"\n }\n ]\n}")
-
-	req, err := http.NewRequest("POST", server.URL, bytes.NewBuffer(body))
-	if err != nil {
-		t.Errorf("Error in creating POST request for createGameHandler: %v", err)
-	}
-	req.Header.Add("Content-Type", "application/json")
-
-	res, err := client.Do(req)
-	if err != nil {
-		t.Errorf("Error in POST to createGameHandler: %v", err)
-	}
-	defer res.Body.Close()
-
-	payload, err := ioutil.ReadAll(res.Body)
-
-	if err != nil {
-		t.Errorf("Error reading response body: %v", err)
-	}
-
-	if res.StatusCode != http.StatusCreated {
-		t.Errorf("Error reading response body: 201, received %s", res.Status)
-	}
-
-	if _, ok := res.Header["Location"]; !ok {
-		t.Error("Location header is not set")
-	}
-
-	loc, headerOk := res.Header["Location"]
-	if !headerOk {
-		t.Error("Location header is not set")
-	} else {
-		if !strings.Contains(loc[0], "/matches/") {
-			t.Errorf("Location header should contain '/matches/'")
-		}
-		if len(loc[0]) != len(fakeMatchLocationResult) {
-			t.Errorf("Location value does not contain guid of new match")
-		}
-	}
+	allGames := []hexgame.Game {
 		
-	fmt.Printf("Payload: %s", string(payload))
+	}
+
+	if recorder.Code != http.StatusOK {
+		t.Errorf("Expected %v; received %v", http.StatusOK, recorder.Code)
+	}
+	payload, err := ioutil.ReadAll(recorder.Body)
+	if err != nil {
+		t.Errorf("Error parsing response body: %v", err)
+	}
+	err = json.Unmarshal(payload, &allGames)
+	if err != nil {
+		t.Errorf("Error unmarshaling response to a list of maps: %v", err)
+	}
 }
+	
+func TestGetGame(t *testing.T) {
+	var (
+		request *http.Request
+		recorder *httptest.ResponseRecorder
+	)
+
+	server := NewServer()
+
+	recorder = httptest.NewRecorder()
+	request, _ = http.NewRequest("GET", "/maps/12345", nil)
+	server.ServeHTTP(recorder, request)
+
+	aGame := hexgame.Game {
+		
+	}
+
+	if recorder.Code != http.StatusOK {
+		t.Errorf("Expected %v; received %v", http.StatusOK, recorder.Code)
+	}
+	payload, err := ioutil.ReadAll(recorder.Body)
+	if err != nil {
+		t.Errorf("Error parsing response body: %v", err)
+	}
+	err = json.Unmarshal(payload, &aGame)
+	if err != nil {
+		t.Errorf("Error unmarshaling response to a request for a map: %v", err)
+	}
+
+	if aGame.Name != "12345" {
+		t.Errorf("Wrong ID: %s: %v", aGame.Name, err)		
+	}
+}
+
+

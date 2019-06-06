@@ -13,10 +13,6 @@ import (
 	"github.com/markllama/hexgame-server/hexmap"
 )
 
-// var (
-// 	formatter = render.New(render.Options{ IndentJSON: true })
-// )
-
 func TestGetMapList(t *testing.T) {
 	var (
 		request *http.Request
@@ -46,7 +42,7 @@ func TestGetMapList(t *testing.T) {
 	}
 }
 	
-func TestGetMapL(t *testing.T) {
+func TestGetMap(t *testing.T) {
 	var (
 		request *http.Request
 		recorder *httptest.ResponseRecorder
